@@ -1,7 +1,25 @@
+language: php
+
+php:
+  - 7.0
+  - 7.1
+
+services:
+  - mysql
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+
+dist: trusty
+
+sudo: required
+
+before_script:
+  - mysql -e 'create database antvel;'
+
 deploy:
-	provider: script
-
-	script: mysql -u root -p --disable-pager --batch --raw --skip-column-names --unbuffered --database testfinal --execute 'source Testing/mytap-0.02/test.sql'
-
-	on:
-		branch: master
+  script: mysql -u root -p --disable-pager --batch --raw --skip-column-names --unbuffered --database testfinal --execute 'source Testing/mytap-0.02/test.sql'
