@@ -17,9 +17,9 @@ sudo: required
 
 before_script:
   - echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-  - mysql -e 'create database testfinal;'
-  - mysql -e 'source Testing/mytap-0.02/sta_users.sql;'
-  - mysql -e 'source Testing/mytap-0.02/sta_calendarEvents.sql;'
+  - echo mysql create database testfinal;'
+  - echo mysql source Testing/mytap-0.02/sta_users.sql;
+  - echo mysql source Testing/mytap-0.02/sta_calendarEvents.sql;
 
 deploy:
   script: mysql -u root --disable-pager --batch --raw --skip-column-names --unbuffered --database testfinal --execute 'source Testing/mytap-0.02/test.sql'
