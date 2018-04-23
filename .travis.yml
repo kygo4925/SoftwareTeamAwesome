@@ -19,7 +19,7 @@ dist: trusty
 sudo: required
 
 before_script:
-  - mysql -e 'create database antvel;'
+  - mysql -e 'create database testfinal;'
 
 deploy:
   script: mysql -u root -p --disable-pager --batch --raw --skip-column-names --unbuffered --database testfinal --execute 'source Testing/mytap-0.02/test.sql'
