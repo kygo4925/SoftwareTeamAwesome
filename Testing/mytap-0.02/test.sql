@@ -1,4 +1,3 @@
--- edit
 -- Start a transaction.
 BEGIN;
 
